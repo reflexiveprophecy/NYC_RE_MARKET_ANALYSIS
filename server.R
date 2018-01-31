@@ -80,8 +80,8 @@ shinyServer(function(input, output, session){
   
   #boroughchart
   output$boroughchart <- renderPlotly({
-    plotlynycsales = ggplotly(ggplot(data = nycgroup(), aes(x = SALE_DATE, y = Median_Sale_Price)) + 
-                                geom_bar(stat = 'identity', fill = '#0BD4F8') + 
+    plotlynycsales = ggplotly(ggplot(data = nycgroup(), aes(x = SALE_DATE, y = Median_Sale_Price, group = 1)) + 
+                                geom_line(color = '#0BD4F8') + 
                                 ggtitle(paste(input$pricebyborough,'AVERAGE SALE PRICE')) +
                                 xlab('Sale Date') + ylab('Median Sale Price'))
   })
@@ -110,8 +110,8 @@ shinyServer(function(input, output, session){
                         summarise(Median_Sale_Price = round(median(SALE_PRICE, na.rm = T)),0) %>%
                         arrange(SALE_DATE) 
     
-    neighborchart = ggplotly(ggplot(neighborhoodsales, aes(x = SALE_DATE, y = Median_Sale_Price)) +
-                        geom_bar(stat = 'identity', fill = '#FFC700') + 
+    neighborchart = ggplotly(ggplot(neighborhoodsales, aes(x = SALE_DATE, y = Median_Sale_Price, group = 1)) +
+                        geom_line(color = '#FFC700') + 
                         ggtitle(paste(input$BOROUGH, input$NEIGHBORHOOD,'MEDIAN SALE PRICE BY TYPE')) + xlab('Sale Date') + ylab('Median Sale Price'))
   
   })

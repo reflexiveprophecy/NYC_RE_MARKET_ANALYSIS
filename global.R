@@ -122,3 +122,9 @@ neighborhood = unique(nycsales$NEIGHBORHOOD)
 buildingclasscategory = unique(nycsales$BUILDING_CLASS_CATEGORY)
 
 
+
+
+                            
+
+
+

@@ -1,1 +1,1 @@
-https://reflexiveprophecy.shinyapps.io/NYC_RE_MARKET_ANALYSIS_Shiny_App/
+https://reflexiveprophecy.shinyapps.io/Shiny_App/
