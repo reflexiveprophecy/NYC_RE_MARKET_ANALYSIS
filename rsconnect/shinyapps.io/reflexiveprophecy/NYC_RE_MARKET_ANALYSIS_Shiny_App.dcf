@@ -1,0 +1,12 @@
+name: NYC_RE_MARKET_ANALYSIS_Shiny_App
+title: NYC_RE_MARKET_ANALYSIS_Shiny_App
+username:
+account: reflexiveprophecy
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 266993
+bundleId: 1200289
+url: https://reflexiveprophecy.shinyapps.io/NYC_RE_MARKET_ANALYSIS_Shiny_App/
+when: 1517366940.85631
+asMultiple: FALSE
+asStatic: FALSE

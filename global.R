@@ -42,7 +42,6 @@ nycsales = nycrollingsales %>%
   mutate(., ADDRESS = stri_trans_totitle(ADDRESS)) %>%
   mutate(., BUILDING_CLASS_CATEGORY = substr(BUILDING_CLASS_CATEGORY,4, 100))
   
-View(nycsales)
 
 nycsales = nycsales[,-1]
 
@@ -50,7 +49,6 @@ nycsales = nycsales[,-1]
 nycsales$SALE_DATE = as.Date(nycsales$SALE_DATE, '%m/%d/%y')
 nycsales$SALE_DATE = format(nycsales$SALE_DATE, "%y/%m")
 
-View(nycsales)
 
 
 boroswitch = function(x){
@@ -99,16 +97,11 @@ convertaddress = function(x){
 
 
 fulladdress = sapply(nycsales$BOROUGH, convertaddress)
-fulladdress
-
-
 
 
 nycsales = nycsales %>% 
   mutate(ADDRESS = sapply(strsplit(nycsales$ADDRESS, ',', fixed = TRUE), takeaddress)) %>%
   mutate(ADDRESS = paste(ADDRESS, fulladdress, ZIP_CODE))
-
-
 
 
 nyctotal = inner_join(nycsales, nycoccupancy, by = c('BLOCK' = 'BLOCK', 'LOT' = 'LOT', 'BOROUGH' = 'BOROUGH'))
@@ -117,14 +110,6 @@ nyctotal = nyctotal[!is.na(as.numeric(nyctotal$LATITUDE)), ]
 nyctotal = nyctotal[!is.na(as.numeric(nyctotal$LONGITUDE)), ]
 nyctotal = unique(nyctotal)
 
-nrow(nyctotal$LATITUDE)
-nrow(nyctotal$LONGITUDE)
-plot(nyctotal$LATITUDE, nyctotal$LONGITUDE)
-
-View(nyctotal)
-class(nyctotal)
-class(nyctotal$LATITUDE)
-class(nyctotal$LONGITUDE)
 
 
 BOROUGH = unique(nycsales$BOROUGH)
@@ -135,7 +120,5 @@ BUILDING_CLASS_CATEGORY = unique(nycsales$BUILDING_CLASS_CATEGORY)
 borough = unique(nycsales$BOROUGH)
 neighborhood = unique(nycsales$NEIGHBORHOOD)
 buildingclasscategory = unique(nycsales$BUILDING_CLASS_CATEGORY)
-
-
 
 
